@@ -45,13 +45,13 @@ func storesolution() []string {
 		rand.Seed(time.Now().UTC().UnixNano())
 		c := rand.Intn(len(tempcoloursList))
 		solutionList = append(solutionList, tempcoloursList[c])
-		fmt.Println(tempcoloursList, c, solutionList)
+		//fmt.Println(tempcoloursList, c, solutionList)
 		newtempcoloursList := tempcoloursList[:c]
-		fmt.Println("newtempcolourslist", newtempcoloursList)
+		//fmt.Println("newtempcolourslist", newtempcoloursList)
 		if c != len(tempcoloursList)-1 {
 			//for z := c + 1; z < len(tempcoloursList); z++ {
 			var tempvar = tempcoloursList[c+1:]
-			fmt.Println("newtempcoloursList part deux", tempvar)
+			//fmt.Println("newtempcoloursList part deux", tempvar)
 			newtempcoloursList = append(newtempcoloursList,
 				tempvar...)
 
@@ -64,9 +64,9 @@ func storesolution() []string {
 }
 
 func printlist(s []string) {
-	for i := range s {
-		fmt.Println(i, s[i])
-	}
+	//for i := range s {
+		//fmt.Println(i, s[i])
+	//}
 }
 
 func getanswer(thinglist []string) (v int) {
@@ -108,63 +108,3 @@ func getguesses() (c1, c2, c3, c4 int) {
 	return c1, c2, c3, c4
 }
 
-/*func gametime() {
-	//fmt.Println(coloursList)
-	var feedbackstring = [][]string{}
-	storesolution()
-	//fmt.Println(solutionList)
-guess:
-	for _, fb := range feedbackstring {
-		fmt.Println(fb)
-	}
-	c1, c2, c3, c4 := getguesses()
-	fmt.Println("Your Guess:", coloursList[c1], coloursList[c2], coloursList[c3], coloursList[c4])
-	fmt.Println(solutionList)
-	var guessstring = []string{coloursList[c1], coloursList[c2], coloursList[c3], coloursList[c4]}
-	fmt.Println("\nPress ENTER to find out if you're right!\n")
-	fmt.Scanln()
-	if solutionList[0] == guessstring[0] &&
-		solutionList[1] == guessstring[1] &&
-		solutionList[2] == guessstring[2] &&
-		solutionList[3] == guessstring[3] {
-		fmt.Println("Correct, You Win!")
-		return
-	}
-	switch solutionList[0] {
-	case guessstring[0]:
-		guessstring = append(guessstring, "White")
-	case guessstring[1], guessstring[2], guessstring[3]:
-		guessstring = append(guessstring, "Black")
-	default:
-		guessstring = append(guessstring, "_____")
-	}
-	//to do
-	switch solutionList[1] {
-	case guessstring[1]:
-		guessstring = append(guessstring, "White")
-	case guessstring[0], guessstring[2], guessstring[3]:
-		guessstring = append(guessstring, "Black")
-	default:
-		guessstring = append(guessstring, "_____")
-	}
-	switch solutionList[2] {
-	case guessstring[2]:
-		guessstring = append(guessstring, "White")
-	case guessstring[1], guessstring[0], guessstring[3]:
-		guessstring = append(guessstring, "Black")
-	default:
-		guessstring = append(guessstring, "_____")
-	}
-	switch solutionList[3] {
-	case guessstring[3]:
-		guessstring = append(guessstring, "White")
-	case guessstring[1], guessstring[2], guessstring[0]:
-		guessstring = append(guessstring, "Black")
-	default:
-		guessstring = append(guessstring, "_____")
-	}
-
-	fmt.Println("White means right colour, right place in sequence. Black means right colour, wrong place in sequence. Use your logic and try again!")
-	feedbackstring = append(feedbackstring, guessstring)
-	goto guess
-}*/

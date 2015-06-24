@@ -20,6 +20,7 @@ var gameIDslice []*userGame
 var gameIDsliceMutex sync.Mutex
 
 func main() {
+	fmt.Println("Please open a web browser and head on over to localhost:8080 to play your game!")
 
 	http.Handle("/", http.FileServer(http.Dir("./pagecontent")))
 
@@ -108,8 +109,8 @@ func main() {
 	})
 
 	http.HandleFunc("/guess", func(w http.ResponseWriter, r *http.Request) {
-		ID, err := strconv.Atoi(r.FormValue("ID"))
-		fmt.Println("DEBUG", ID, err)
+		ID, _ := strconv.Atoi(r.FormValue("ID"))
+		//fmt.Println("DEBUG", ID, err)
 		ug := gameIDslice[ID]
 		fmt.Fprintf(w, "<html><body>")
 		f, _ := os.Open("./pagecontent/guess.html")
